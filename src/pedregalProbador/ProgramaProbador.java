@@ -25,7 +25,7 @@ public class ProgramaProbador {
 		int largoCasa=archivoEntrada.getLargoCasa();
 		int anchoCasa=archivoEntrada.getAnchoCasa();
 		
-		boolean[][] terreno =archivoEntrada.crearTerrenoConPeñascos(largoTerreno,anchoTerreno);
+		boolean[][] terreno =archivoEntrada.crearTerrenoConPeniascos(largoTerreno,anchoTerreno);
 
 		if(entra.toUpperCase().equals("SI")){
 		 //si entra se crea;
@@ -34,21 +34,21 @@ public class ProgramaProbador {
 			String orientacionDeLaPuerta=archivoSalida.obtenerOrientacion();
 			
 			 if(largoCasa<anchoCasa && (orientacionDeLaPuerta.equals("S")||orientacionDeLaPuerta.equals("N"))){ //la casa no se roto
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
+				 return !hayPeniasco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
 			 }
 			 if(largoCasa<anchoCasa &&(orientacionDeLaPuerta.equals("E")||orientacionDeLaPuerta.equals("O"))){//la casa se roto
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,anchoCasa,largoCasa,terreno);
+				 return !hayPeniasco(posicionInicialXCasa,posicionInicialYCasa,anchoCasa,largoCasa,terreno);
 			 }
 			 
 			 if(largoCasa>anchoCasa &&(orientacionDeLaPuerta.equals("E")||orientacionDeLaPuerta.equals("O"))){//la casa no se roto
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
+				 return !hayPeniasco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
 			 }
 			 
 			 if(largoCasa>anchoCasa &&(orientacionDeLaPuerta.equals("S")||orientacionDeLaPuerta.equals("N"))){//la casa se roto
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,anchoCasa,largoCasa,terreno);
+				 return !hayPeniasco(posicionInicialXCasa,posicionInicialYCasa,anchoCasa,largoCasa,terreno);
 			 }
 			 if(largoCasa==anchoCasa)
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
+				 return !hayPeniasco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
 		}
 		else {
 			if((largoCasa>=largoTerreno && anchoCasa>=anchoTerreno)||(largoCasa>=anchoTerreno && anchoCasa>=largoTerreno)){
@@ -68,7 +68,7 @@ public class ProgramaProbador {
 	}
 
 	private static boolean verificarSiCasaEntra(int largoTerreno, int anchoTerreno, int largoCasa, int anchoCasa, boolean[][] terreno) {
-        boolean hayPeñasco = true;
+        boolean hayPeniasco = true;
         for(int i=0;i<largoTerreno;i++){
  			for(int j=0;j<anchoTerreno;j++){
 				if(i + largoCasa < terreno.length && j + anchoCasa < terreno[i].length){
@@ -79,30 +79,30 @@ public class ProgramaProbador {
 //						}
 //						deltaX++;
 //					}
-                    hayPeñasco = false;
+                    hayPeniasco = false;
                     for(int deltaX=i ; deltaX < largoCasa + i ; deltaX++){
                         for(int deltaY=j ; deltaY < anchoCasa + j ; deltaY++){
                             if(terreno[deltaX][deltaY]){
-                                hayPeñasco = true;
+                                hayPeniasco = true;
                             }
-                            if(hayPeñasco){
+                            if(hayPeniasco){
                                 break;
                             }
                         }
-                        if(hayPeñasco){
+                        if(hayPeniasco){
                             break;
                         }
                     }
-                    if(!hayPeñasco){
+                    if(!hayPeniasco){
                         return true;
                     }
 				}
 			}
 		}
-		return !hayPeñasco;
+		return !hayPeniasco;
 	}
 	
-	public static boolean hayPeñasco(int posicionInicialXCasa,int posicionInicialYCasa,int largoCasa,int anchoCasa,boolean[][] terreno) throws Exception{
+	public static boolean hayPeniasco(int posicionInicialXCasa,int posicionInicialYCasa,int largoCasa,int anchoCasa,boolean[][] terreno) throws Exception{
 		if(posicionInicialXCasa+largoCasa>terreno.length||posicionInicialYCasa+anchoCasa>terreno[0].length) {
 			throw new Exception("Segmentation fault");
 		}
