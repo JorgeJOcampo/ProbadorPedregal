@@ -27,15 +27,15 @@ public class ArchivoEntrada {
 		return entrada.nextInt();
 	}
 
-	public boolean[][] crearTerrenoConPeñascos(int largoTerreno, int anchoTerreno) {
+	public boolean[][] crearTerrenoConPeÃ±ascos(int largoTerreno, int anchoTerreno) {
 		boolean[][] terreno= new boolean[largoTerreno][anchoTerreno];
 		for(int i=0;i<largoTerreno;i++){
 			for(int j=0;j<anchoTerreno;j++){
 				terreno[i][j]=false;
 			}
 		}
-		int cantidadDePeñascos=entrada.nextInt();
-		for(int i=0;i<cantidadDePeñascos;i++)
+		int cantidadDePeÃ±ascos=entrada.nextInt();
+		for(int i=0;i<cantidadDePeÃ±ascos;i++)
 		{
 			terreno[entrada.nextInt()-1][entrada.nextInt()-1]=true;
 		}

@@ -1,7 +1,6 @@
 package pedregalProbador;
 
 public class ProgramaProbador {
-	
 
 	public static void main(String[] args){
 		try {
@@ -26,23 +25,7 @@ public class ProgramaProbador {
 		int largoCasa=archivoEntrada.getLargoCasa();
 		int anchoCasa=archivoEntrada.getAnchoCasa();
 		
-		boolean[][] terreno =archivoEntrada.crearTerrenoConPeñascos(largoTerreno,anchoTerreno);
-	
-		
-		/*for(int i=0;i<terreno.length;i++){
-			for(int j=0;j<terreno[i].length;j++){
-				System.out.print(terreno[i][j] + " ");
-			}
-			System.out.println("");
-		}*/
-	/*	System.out.println(entra);
-		System.out.println("largo terreno: "+ largoTerreno);
-		System.out.println("ancho terreno: "+ anchoTerreno);
-		System.out.println("largo casa: "+ largoCasa);
-		System.out.println("ancho casa: "+ anchoCasa);
-		Pruebas feas parte I*/
-		
-		
+		boolean[][] terreno =archivoEntrada.crearTerrenoConPeÃ±ascos(largoTerreno,anchoTerreno);
 
 		if(entra.toUpperCase().equals("SI")){
 		 //si entra se crea;
@@ -50,33 +33,28 @@ public class ProgramaProbador {
 			int posicionInicialYCasa=archivoSalida.getPosicionInicialYCasa();
 			String orientacionDeLaPuerta=archivoSalida.obtenerOrientacion();
 			
-			/*System.out.println("posicion inicial x de la casa " + posicionInicialXCasa);
-			System.out.println("posicion inicial y de la casa " + posicionInicialYCasa);
-			System.out.println(orientacionDeLaPuerta);
-			Pruebas feas parte II */
 			 if(largoCasa<anchoCasa && (orientacionDeLaPuerta.equals("S")||orientacionDeLaPuerta.equals("N"))){ //la casa no se roto
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
+				 return !hayPeÃ±asco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
 			 }
 			 if(largoCasa<anchoCasa &&(orientacionDeLaPuerta.equals("E")||orientacionDeLaPuerta.equals("O"))){//la casa se roto
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,anchoCasa,largoCasa,terreno);
+				 return !hayPeÃ±asco(posicionInicialXCasa,posicionInicialYCasa,anchoCasa,largoCasa,terreno);
 			 }
 			 
 			 if(largoCasa>anchoCasa &&(orientacionDeLaPuerta.equals("E")||orientacionDeLaPuerta.equals("O"))){//la casa no se roto
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
+				 return !hayPeÃ±asco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
 			 }
 			 
 			 if(largoCasa>anchoCasa &&(orientacionDeLaPuerta.equals("S")||orientacionDeLaPuerta.equals("N"))){//la casa se roto
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,anchoCasa,largoCasa,terreno);
+				 return !hayPeÃ±asco(posicionInicialXCasa,posicionInicialYCasa,anchoCasa,largoCasa,terreno);
 			 }
 			 if(largoCasa==anchoCasa)
-				 return !hayPeñasco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
+				 return !hayPeÃ±asco(posicionInicialXCasa,posicionInicialYCasa,largoCasa,anchoCasa,terreno);
 		}
 		else {
 			if((largoCasa>=largoTerreno && anchoCasa>=anchoTerreno)||(largoCasa>=anchoTerreno && anchoCasa>=largoTerreno)){
 				return true;
 			}
-			//falta verificar si el largoCasa es mas largo que el anchoterreno y largoterreno y lo mismo con el anchocasa
-			
+
 			boolean entro=verificarSiCasaEntra(largoTerreno, anchoTerreno, largoCasa, anchoCasa, terreno);
 			if(!entro){
 				entro=verificarSiCasaEntra(largoTerreno, anchoTerreno, anchoCasa, largoCasa, terreno);
@@ -90,7 +68,7 @@ public class ProgramaProbador {
 	}
 
 	private static boolean verificarSiCasaEntra(int largoTerreno, int anchoTerreno, int largoCasa, int anchoCasa, boolean[][] terreno) {
-        boolean hayPeñasco = true;
+        boolean hayPeÃ±asco = true;
         for(int i=0;i<largoTerreno;i++){
  			for(int j=0;j<anchoTerreno;j++){
 				if(i + largoCasa < terreno.length && j + anchoCasa < terreno[i].length){
@@ -101,30 +79,30 @@ public class ProgramaProbador {
 //						}
 //						deltaX++;
 //					}
-                    hayPeñasco = false;
+                    hayPeÃ±asco = false;
                     for(int deltaX=i ; deltaX < largoCasa + i ; deltaX++){
                         for(int deltaY=j ; deltaY < anchoCasa + j ; deltaY++){
                             if(terreno[deltaX][deltaY]){
-                                hayPeñasco = true;
+                                hayPeÃ±asco = true;
                             }
-                            if(hayPeñasco){
+                            if(hayPeÃ±asco){
                                 break;
                             }
                         }
-                        if(hayPeñasco){
+                        if(hayPeÃ±asco){
                             break;
                         }
                     }
-                    if(!hayPeñasco){
+                    if(!hayPeÃ±asco){
                         return true;
                     }
 				}
 			}
 		}
-		return !hayPeñasco;
+		return !hayPeÃ±asco;
 	}
 	
-	public static boolean hayPeñasco(int posicionInicialXCasa,int posicionInicialYCasa,int largoCasa,int anchoCasa,boolean[][] terreno) throws Exception{
+	public static boolean hayPeÃ±asco(int posicionInicialXCasa,int posicionInicialYCasa,int largoCasa,int anchoCasa,boolean[][] terreno) throws Exception{
 		if(posicionInicialXCasa+largoCasa>terreno.length||posicionInicialYCasa+anchoCasa>terreno[0].length) {
 			throw new Exception("Segmentation fault");
 		}
